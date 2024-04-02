@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "scheme": "acme",
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "name": "pallet-overhang-react-native",
+    "slug": "pallet-overhang-react-native"
+  }
+}

@@ -1,13 +1,3 @@
-# Expo Router Example
+A react native expo app made for a palletizing company to be able to show their clients what bag layouts will or will not work.
 
-Use [`expo-router`](https://docs.expo.dev/router/introduction/) to build native navigation using files in the `app/` directory.
-
-## 🚀 How to use
-
-```sh
-npx create-expo-app -e with-router
-```
-
-## 📝 Notes
-
-- [Expo Router: Docs](https://docs.expo.dev/router/introduction/)
+This is based off my existing react web app.

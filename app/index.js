@@ -7,12 +7,12 @@ import Pallet from './components/Pallet'
 
 const Home = () => {
     const [ specData, setSpecData ] = useState({
-        palletWidth: 40,
-        palletLength: 48,
-        bagWidth: 16,
-        bagLength: 24,
-        allowableWidthOverhang: 1,
-        allowableLengthOverhang: 1,
+        palletWidth: '40',
+        palletLength: '48',
+        bagWidth: '16',
+        bagLength: '24',
+        allowableWidthOverhang: '1',
+        allowableLengthOverhang: '1',
         pattern: '5',
     })
 

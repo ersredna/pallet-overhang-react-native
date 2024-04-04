@@ -3,7 +3,7 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-nativ
 import Dropdown from 'react-native-input-select'
 
 const SpecForm = ({ specData: { palletWidth, palletLength, bagWidth, bagLength, allowableWidthOverhang, allowableLengthOverhang, pattern }, handleChange, palletSwap, bagSwap }) => {
-
+    
     function handleChangeLink(e) {
         handleChange(e.target._internalFiberInstanceHandleDEV.memoizedProps.nativeID, e.nativeEvent.text )
     }

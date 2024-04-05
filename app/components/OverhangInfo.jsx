@@ -19,10 +19,12 @@ const OverhangInfo = ({ specData: { allowableWidthOverhang, allowableLengthOverh
 
 const styles = (props = {}) => StyleSheet.create({
     lineWrapper: {
+        marginLeft: 5,
         flexDirection: 'row',
     },
     text: {
-        fontSize: 20,
+        fontSize: 23,
+        marginBottom: 5,
     },
     overhangText: {
         color: props.color,

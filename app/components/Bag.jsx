@@ -3,9 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 
 const Bag = ({ width, length, position }) => {
     return (
-        <View style={styles({ width, length, position }).bag}>
-            <Text>test</Text>
-        </View>
+        <View style={styles({ width, length, position }).bag} />
     )
 }
 

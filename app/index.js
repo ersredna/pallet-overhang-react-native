@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, SafeAreaView, Text } from 'react-native'
+import { StyleSheet, View, SafeAreaView, Dimensions } from 'react-native'
 
 // import { SpecForm, Pallet } from './components'
 import SpecForm from './components/SpecForm'
@@ -56,9 +56,21 @@ const Home = () => {
     return (
         <SafeAreaView>
             <SpecForm specData={specData} handleChange={handleChange} palletSwap={palletSwap} bagSwap={bagSwap} />
-            <Pallet specData={specData} />
+            <View style={styles({ palletLength: specData.palletLength }).palletWrapper}>
+                <Pallet specData={specData} />
+            </View>
         </SafeAreaView>
     )
 }
+
+const styles = (props = {}) =>  StyleSheet.create({
+    palletWrapper: {
+        width: Dimensions.get('window').width,
+        height: props.palletLength,
+        alignItems: 'center',
+        borderWidth: 5,
+        borderColor: 'red',
+    },
+})
 
 export default Home

@@ -12,33 +12,23 @@ const Pallet = ({ specData: { palletWidth, palletLength, bagWidth, bagLength, pa
     const border = 3
 
     switch (pattern) {  
-        case '4a':
+        case '4':
             bags = 4
             onSide = 2
             positions = {
-                0: { x: (palletWidth / 2 - bagLength + offset) * 7, y: (palletLength / 2 - bagWidth - offset) * 7 },
-                1: { x: (palletWidth / 2 - offset) * 7, y: (palletLength / 2 + offset) * 7 }, 
-                2: { x: (palletWidth / 2 + offset) * 7, y: (palletLength / 2 - bagLength + offset) * 7 }, 
-                3: { x: (palletWidth / 2 - bagWidth - offset) * 7, y: (palletLength / 2 - offset) * 7 }, 
-            }
-            break
-        case '4b':
-            bags = 4
-            onSide = 3
-            positions = {
-                0: { x: (palletWidth / 2 - offset) * 7, y: (palletLength / 2 - bagWidth * 1.5) * 7 },
-                1: { x: (palletWidth / 2 - offset) * 7, y: (palletLength / 2 + bagWidth * 0.5) * 7 },
-                2: { x: (palletWidth / 2 - offset) * 7, y: (palletLength / 2 - bagWidth * 0.5) * 7 },
-                3: { x: (palletWidth / 2 - bagWidth - offset) * 7, y: (palletLength / 2 - bagLength / 2) * 7 },
+                0: { x: (palletWidth / 2 - bagLength + offset) * 7 - border, y: (palletLength / 2 - bagWidth - offset) * 7 - border },
+                1: { x: (palletWidth / 2 - offset) * 7 - border, y: (palletLength / 2 + offset) * 7 - border }, 
+                2: { x: (palletWidth / 2 + offset) * 7 - border, y: (palletLength / 2 - bagLength + offset) * 7 - border }, 
+                3: { x: (palletWidth / 2 - bagWidth - offset) * 7 - border, y: (palletLength / 2 - offset) * 7 - border }, 
             }
             break
         case '3':
             bags = 3
             onSide = 1
             positions = {
-                0: { x: (palletWidth / 2 - bagLength / 2) * 7, y: (palletLength / 2 - bagWidth * 1 - offset) * 7 },
-                1: { x: (palletWidth / 2) * 7, y: (palletLength / 2 - offset) * 7 },
-                2: { x: (palletWidth / 2 - bagWidth) * 7, y: (palletLength / 2 - offset) * 7 }, 
+                0: { x: (palletWidth / 2 - bagLength / 2) * 7 - border, y: (palletLength / 2 - bagWidth * 1 - offset) * 7 - border },
+                1: { x: (palletWidth / 2) * 7 - border, y: (palletLength / 2 - offset) * 7 - border },
+                2: { x: (palletWidth / 2 - bagWidth) * 7 - border, y: (palletLength / 2 - offset) * 7 - border }, 
             }
             break
         default:

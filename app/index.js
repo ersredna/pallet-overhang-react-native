@@ -3,6 +3,7 @@ import { StyleSheet, View, SafeAreaView, Dimensions } from 'react-native'
 
 // import { SpecForm, Pallet } from './components'
 import SpecForm from './components/SpecForm'
+import OverhangInfo from './components/OverhangInfo'
 import Pallet from './components/Pallet'
 
 const Home = () => {
@@ -56,6 +57,7 @@ const Home = () => {
     return (
         <SafeAreaView>
             <SpecForm specData={specData} handleChange={handleChange} palletSwap={palletSwap} bagSwap={bagSwap} />
+            <OverhangInfo specData={specData} />
             <View style={styles({ palletLength: specData.palletLength }).palletWrapper}>
                 <Pallet specData={specData} />
             </View>

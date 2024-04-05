@@ -9,12 +9,12 @@ const SpecForm = ({ specData: { palletWidth, palletLength, bagWidth, bagLength, 
     }
 
     function handlePatternChangeLink(value) {
-        handleChange('pattern', value)
+        handleChange('pattern-input', value)
     }
 
     return (
         <View style={styles.container}>
-            <View style={styles.inputWrapper}>
+            <View style={styles.lineWrapper}>
                 <Text style={styles.text}>Pallet -</Text>
                 <Text style={styles.text}>Width(in):</Text>
                 <TextInput id='pallet-width-input' keyboardType='numeric' onChange={handleChangeLink} style={styles.input} value={palletWidth.toString()}  />
@@ -24,7 +24,7 @@ const SpecForm = ({ specData: { palletWidth, palletLength, bagWidth, bagLength, 
                     <Text style={styles.text}>Swap</Text>
                 </TouchableOpacity>
             </View>
-            <View style={styles.inputWrapper}>
+            <View style={styles.lineWrapper}>
                 <Text style={styles.text}>Bag -</Text>
                 <Text style={styles.text}>Width(in):</Text>
                 <TextInput id='bag-width-input' keyboardType='numeric' onChange={handleChangeLink} style={styles.input} value={bagWidth.toString()}  />
@@ -34,14 +34,14 @@ const SpecForm = ({ specData: { palletWidth, palletLength, bagWidth, bagLength, 
                     <Text style={styles.text}>Swap</Text>
                 </TouchableOpacity>
             </View>
-            <View style={styles.inputWrapper}>
+            <View style={styles.lineWrapper}>
                 <Text style={styles.text}>Allowable Overhang -</Text>
                 <Text style={styles.text}>X(in):</Text>
                 <TextInput id='allowable-width-overhang-input' keyboardType='numeric' onChange={handleChangeLink} style={styles.input} value={allowableWidthOverhang.toString()}  />
                 <Text style={styles.text}>Y(in):</Text>
                 <TextInput id='allowable-length-overhang-input' keyboardType='numeric' onChange={handleChangeLink} style={styles.input} value={allowableLengthOverhang.toString()}  />
             </View>
-            <View style={styles.inputWrapper}>
+            <View style={styles.lineWrapper}>
                 <Dropdown 
                     options={[
                         { label: '5', value: '5' },
@@ -49,7 +49,7 @@ const SpecForm = ({ specData: { palletWidth, palletLength, bagWidth, bagLength, 
                         { label: '3', value: '3' },
                     ]}
                     selectedValue={pattern}
-                    onValueChange={value => handleChange('pattern-input', value)}
+                    onValueChange={value => handlePatternChangeLink(value)}
                 />
             </View>
         </View>
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     container: {
         width: 200,
     },
-    inputWrapper: {
+    lineWrapper: {
         marginBottom: 5,
         flexDirection: 'row'
     },

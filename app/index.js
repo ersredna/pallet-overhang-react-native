@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { StyleSheet, View, SafeAreaView, Dimensions } from 'react-native'
 
 // import { SpecForm, Pallet } from './components'
@@ -16,6 +16,33 @@ const Home = () => {
         allowableLengthOverhang: '1',
         pattern: '5',
     })
+    const [ overhangInfo, setOverhangInfo ] = useState({
+        widthOverhang: 0,
+        lengthOverhang: 0,
+    })
+
+    useEffect(() => {
+        const { palletWidth, palletLength, bagWidth, bagLength, pattern } = specData
+
+        setOverhangInfo(() => {
+            switch (pattern) {
+                case '5':
+                    widthOverhang = ((Number(bagWidth) + Number(bagLength)) - palletWidth) / 2
+                    lengthOverhang = (Math.max(Number(bagWidth) * 3, Number(bagLength) * 2) - palletLength) / 2
+                    return { widthOverhang, lengthOverhang }
+                case '4':
+                    widthOverhang = ((Number(bagWidth) + Number(bagLength)) - palletWidth) / 2
+                    lengthOverhang = ((Number(bagWidth) + Number(bagLength)) - palletLength) / 2
+                    return { widthOverhang, lengthOverhang }
+                case '3':
+                    widthOverhang = (Math.max(Number(bagWidth) * 2, Number(bagLength)) - palletWidth) / 2
+                    lengthOverhang = ((Number(bagWidth) + Number(bagLength)) - palletLength) / 2
+                    return { widthOverhang, lengthOverhang }
+                default:
+                    break
+            }
+        })
+    }, [specData])
 
     const handleChange = (id, value) => {
         if (/[^0-9\.\r\n]|(.*?\.){2}/.test(value) && id !== 'pattern-input') return
@@ -56,9 +83,9 @@ const Home = () => {
 
     return (
         <SafeAreaView>
-            <SpecForm specData={specData} handleChange={handleChange} palletSwap={palletSwap} bagSwap={bagSwap} />
-            <OverhangInfo specData={specData} />
-            <View style={styles({ palletLength: specData.palletLength }).palletWrapper}>
+            <SpecForm specData={specData} handleChange={handleChange} palletSwap={palletSwap} bagSwap={bagSwap} setOverhangInfo={setOverhangInfo} />
+            <OverhangInfo specData={specData} overhangInfo={overhangInfo} />
+            <View style={styles({ palletLength: specData.palletLength, yOverhang: overhangInfo.lengthOverhang }).palletWrapper}>
                 <Pallet specData={specData} />
             </View>
         </SafeAreaView>
@@ -68,7 +95,8 @@ const Home = () => {
 const styles = (props = {}) =>  StyleSheet.create({
     palletWrapper: {
         width: Dimensions.get('window').width,
-        height: props.palletLength,
+        height: props.palletLength + props.yOverhang,
+        justifyContent: 'center',
         alignItems: 'center',
         borderWidth: 5,
         borderColor: 'red',

@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import Dropdown from 'react-native-input-select'
 
-const SpecForm = ({ specData: { palletWidth, palletLength, bagWidth, bagLength, allowableWidthOverhang, allowableLengthOverhang, pattern }, handleChange, palletSwap, bagSwap }) => {
-    
+const SpecForm = ({ specData: { palletWidth, palletLength, bagWidth, bagLength, allowableWidthOverhang, allowableLengthOverhang, pattern }, handleChange, palletSwap, bagSwap, setOverhangInfo }) => {
+
     function handleChangeLink(e) {
         handleChange(e.target._internalFiberInstanceHandleDEV.memoizedProps.nativeID, e.nativeEvent.text )
     }
-
+    
     function handlePatternChangeLink(value) {
         handleChange('pattern-input', value)
     }
@@ -21,7 +21,7 @@ const SpecForm = ({ specData: { palletWidth, palletLength, bagWidth, bagLength, 
                 <Text style={styles.text}>Length(in):</Text>
                 <TextInput id='pallet-length-input' keyboardType='numeric' onChange={handleChangeLink} style={styles.input} value={palletLength.toString()}  />
                 <TouchableOpacity style={{ borderWidth: 1, marginLeft: 5 }} onPress={palletSwap}>
-                    <Text style={styles.text}>Swap</Text>
+                    <Text style={styles.buttonText}>Swap</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.lineWrapper}>
@@ -31,7 +31,7 @@ const SpecForm = ({ specData: { palletWidth, palletLength, bagWidth, bagLength, 
                 <Text style={styles.text}>Length(in):</Text>
                 <TextInput id='bag-length-input' keyboardType='numeric' onChange={handleChangeLink} style={styles.input} value={bagLength.toString()}  />
                 <TouchableOpacity style={{ borderWidth: 1, marginLeft: 5 }} onPress={bagSwap}>
-                    <Text style={styles.text}>Swap</Text>
+                    <Text style={styles.buttonText}>Swap</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.lineWrapper}>
@@ -68,6 +68,9 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 20,
         marginLeft: 5,
+    },
+    buttonText: {
+        fontSize: 20,
     },
     input: {
         width: 30,

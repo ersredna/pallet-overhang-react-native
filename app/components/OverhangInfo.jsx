@@ -1,45 +1,18 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-const OverhangInfo = ({ specData: { palletWidth, palletLength, bagWidth, bagLength, allowableWidthOverhang, allowableLengthOverhang, pattern } }) => {
-    palletWidth = Number(palletWidth)
-    palletLength = Number(palletLength)
-    bagWidth = Number(bagWidth)
-    bagLength = Number(bagLength)
+const OverhangInfo = ({ specData: { allowableWidthOverhang, allowableLengthOverhang }, overhangInfo: { widthOverhang, lengthOverhang } }) => {
 
-    let xOverhang = { value: -1, textColor: 'black' }
-    let yOverhang = { value: -1, textColor: 'black' }
-
-    switch (pattern) {
-        case '5':
-            xOverhang.value = ((bagWidth + bagLength) - palletWidth) / 2
-            xOverhang.textColor = xOverhang.value > allowableWidthOverhang ? 'red' : 'green'
-            yOverhang.value = (Math.max(bagWidth * 3, bagLength * 2) - palletLength) / 2
-            yOverhang.textColor = yOverhang.value > allowableLengthOverhang ? 'red' : 'green'
-            break
-        case '4':
-            xOverhang.value = ((bagWidth + bagLength) - palletWidth) / 2
-            xOverhang.textColor = xOverhang.value > allowableWidthOverhang ? 'red' : 'green'
-            yOverhang.value = ((bagWidth + bagLength) - palletLength) / 2
-            yOverhang.textColor = yOverhang.value > allowableLengthOverhang ? 'red' : 'green'
-            break
-        case '3':
-            xOverhang.value = (Math.max(bagWidth * 2, bagLength) - palletWidth) / 2
-            xOverhang.textColor = xOverhang.value > allowableWidthOverhang ? 'red' : 'green'
-            yOverhang.value = ((bagWidth + bagLength) - palletLength) / 2
-            yOverhang.textColor = yOverhang.value > allowableLengthOverhang ? 'red' : 'green'
-            break
-        default:
-            break
-    }
+    let widthOverhangColor = widthOverhang > allowableWidthOverhang ? 'red' : 'green'
+    let lengthOverhangColor = lengthOverhang > allowableLengthOverhang ? 'red' : 'green'
 
     return (
         <View style={styles().lineWrapper}>
             <Text style={styles().text}>Overhang - </Text>
             <Text style={styles().text}>X: </Text>
-            <Text style={[ styles({ color: xOverhang.textColor }).overhangText, styles().text ]}>{xOverhang.value} </Text>
+            <Text style={[ styles({ color: widthOverhangColor }).overhangText, styles().text ]}>{widthOverhang} </Text>
             <Text style={styles().text}>Y: </Text>
-            <Text style={[ styles({ color: yOverhang.textColor }).overhangText, styles().text ]}>{yOverhang.value} </Text>
+            <Text style={[ styles({ color: lengthOverhangColor }).overhangText, styles().text ]}>{lengthOverhang} </Text>
         </View>
     )
 }

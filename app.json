@@ -1,13 +1,37 @@
 {
   "expo": {
+    "name": "Pallet Overhang Calculator",
+    "slug": "pallet-overhang-calculator",
+    "description": "An App for calculating bag overhang on a pallet.",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "scheme": "acme",
     "web": {
+      "favicon": "./assets/favicon.ico",
       "bundler": "metro"
     },
     "plugins": [
       "expo-router"
     ],
-    "name": "pallet-overhang-react-native",
-    "slug": "pallet-overhang-react-native"
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "f1880c90-ff72-4849-9d2b-0d5831edd7f7"
+      }
+    },
+    "android": {
+      "package": "com.ersredna.palletoverhangcalculator"
+    },
+    "ios": {
+      "bundleIdentifier": "com.ersredna.palletoverhangcalculator"
+    }
   }
 }
